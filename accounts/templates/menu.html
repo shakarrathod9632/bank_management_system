@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>🏦 Simple Banking Menu</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f1f3f6;
+      margin: 40px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px #bbb;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    a {
+      background-color: #2ecc71;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    a:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏦 Simple Banking Menu</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Account Number</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+    {% for acc in accounts %}
+    <tr>
+      <td>{{ acc.name }}</td>
+      <td>{{ acc.account_number }}</td>
+      <td>₹{{ acc.balance }}</td>
+      <td>
+        <a href="{% url 'deposit' acc.id %}">Deposit</a>
+        <a href="{% url 'withdraw' acc.id %}" style="background-color:#e74c3c;">Withdraw</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

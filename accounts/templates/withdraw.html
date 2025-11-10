@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Withdraw Money</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input { padding: 10px; margin: 10px; }
+    button { background: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+    button:hover { background: #c0392b; }
+    .msg { color: red; }
+  </style>
+</head>
+<body>
+  <h2>Withdraw from {{ account.name }}</h2>
+  {% if message %}
+  <p class="msg">{{ message }}</p>
+  {% endif %}
+  <form method="POST">
+    {% csrf_token %}
+    <input type="number" name="amount" step="0.01" placeholder="Enter Amount" required>
+    <button type="submit">Withdraw</button>
+  </form>
+</body>
+</html>
